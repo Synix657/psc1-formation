@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS inscriptions (
     prenom TEXT,
     email TEXT,
     telephone TEXT,
-    dateFormation TEXT,
+    dateNaissance TEXT,
     message TEXT,
     dateInscription DATETIME DEFAULT CURRENT_TIMESTAMP
 )
@@ -32,20 +32,20 @@ app.post("/inscription", (req, res) => {
         prenom,
         email,
         telephone,
-        dateFormation,
+        dateNaissance,
         message
     } = req.body;
 
     db.run(
         `INSERT INTO inscriptions
-        (nom, prenom, email, telephone, dateFormation, message)
+        (nom, prenom, email, telephone, dateNaissance, message)
         VALUES (?, ?, ?, ?, ?, ?)`,
         [
             nom,
             prenom,
             email,
             telephone,
-            dateFormation,
+            dateNaissance,
             message
         ],
         (err) => {
@@ -132,7 +132,7 @@ app.get("/admin", (req, res) => {
                     <td>${row.prenom}</td>
                     <td>${row.email}</td>
                     <td>${row.telephone}</td>
-                    <td>${row.dateFormation}</td>
+                    <td>${row.dateNaissance}</td>
                     <td>${row.message}</td>
                     <td>${row.message}</td>
                     <td>
@@ -206,7 +206,7 @@ app.get("/edit/:id", (req, res) => {
 
             <input name="telephone" value="${row.telephone}" placeholder="Téléphone"><br><br>
 
-            <input type="date" name="dateFormation" value="${row.dateFormation}"><br><br>
+            <input type="date" name="dateNaissance" value="${row.dateNaissance}"><br><br>
 
             <textarea name="message" rows="5">${row.message || ""}</textarea><br><br>
 
@@ -240,7 +240,7 @@ app.post("/edit/:id", (req, res) => {
         prenom,
         email,
         telephone,
-        dateFormation,
+        dateNaissance,
         message
     } = req.body;
 
@@ -251,7 +251,7 @@ app.post("/edit/:id", (req, res) => {
         prenom = ?,
         email = ?,
         telephone = ?,
-        dateFormation = ?,
+        dateNaissance = ?,
         message = ?
         WHERE id = ?`,
         [
@@ -259,7 +259,7 @@ app.post("/edit/:id", (req, res) => {
             prenom,
             email,
             telephone,
-            dateFormation,
+            dateNaissance,
             message,
             id
         ],
