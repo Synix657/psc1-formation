@@ -118,7 +118,7 @@ app.get("/admin", (req, res) => {
                 <th>Prénom</th>
                 <th>Email</th>
                 <th>Téléphone</th>
-                <th>Date</th>
+                <th>Date de naissance</th>
                 <th>Message</th>
                 <th>Actions</th>
             </tr>
@@ -133,7 +133,6 @@ app.get("/admin", (req, res) => {
                     <td>${row.email}</td>
                     <td>${row.telephone}</td>
                     <td>${row.dateNaissance}</td>
-                    <td>${row.message}</td>
                     <td>${row.message}</td>
                     <td>
                         <a href="/edit/${row.id}">Modifier</a>
