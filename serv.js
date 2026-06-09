@@ -7,6 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 
 const db = new sqlite3.Database("psc1.db");
@@ -119,6 +120,7 @@ app.get("/admin", (req, res) => {
                 <th>Téléphone</th>
                 <th>Date</th>
                 <th>Message</th>
+                <th>Actions</th>
             </tr>
             `;
 
@@ -132,6 +134,12 @@ app.get("/admin", (req, res) => {
                     <td>${row.telephone}</td>
                     <td>${row.dateFormation}</td>
                     <td>${row.message}</td>
+                    <td>${row.message}</td>
+                    <td>
+                        <a href="/edit/${row.id}">Modifier</a>
+                        |
+                        <a href="/delete/${row.id}" onclick="return confirm('Supprimer cet inscrit ?')">Supprimer</a>
+                    </td>
                 </tr>
                 `;
 
@@ -144,6 +152,124 @@ app.get("/admin", (req, res) => {
             `;
 
             res.send(html);
+
+        }
+    );
+
+});
+app.get("/delete/:id", (req, res) => {
+
+    const id = req.params.id;
+
+    db.run(
+        "DELETE FROM inscriptions WHERE id = ?",
+        [id],
+        (err) => {
+
+            if (err) {
+                return res.send("Erreur lors de la suppression");
+            }
+
+            res.redirect("/admin");
+
+        }
+    );
+
+});
+
+app.get("/edit/:id", (req, res) => {
+
+    const id = req.params.id;
+
+    db.get(
+        "SELECT * FROM inscriptions WHERE id = ?",
+        [id],
+        (err, row) => {
+
+            if (err || !row) {
+                return res.send("Inscription introuvable");
+            }
+
+            res.send(`
+            <html>
+            <body style="font-family:Arial;padding:30px">
+
+            <h1>Modifier l'inscription</h1>
+
+            <form method="POST" action="/edit/${row.id}">
+
+            <input name="nom" value="${row.nom}" placeholder="Nom"><br><br>
+
+            <input name="prenom" value="${row.prenom}" placeholder="Prénom"><br><br>
+
+            <input name="email" value="${row.email}" placeholder="Email"><br><br>
+
+            <input name="telephone" value="${row.telephone}" placeholder="Téléphone"><br><br>
+
+            <input type="date" name="dateFormation" value="${row.dateFormation}"><br><br>
+
+            <textarea name="message" rows="5">${row.message || ""}</textarea><br><br>
+
+            <button type="submit">
+            Enregistrer
+            </button>
+
+            </form>
+
+            <br>
+
+            <a href="/admin">
+            Retour à la liste
+            </a>
+
+            </body>
+            </html>
+            `);
+
+        }
+    );
+
+});
+
+app.post("/edit/:id", (req, res) => {
+
+    const id = req.params.id;
+
+    const {
+        nom,
+        prenom,
+        email,
+        telephone,
+        dateFormation,
+        message
+    } = req.body;
+
+    db.run(
+        `UPDATE inscriptions
+        SET
+        nom = ?,
+        prenom = ?,
+        email = ?,
+        telephone = ?,
+        dateFormation = ?,
+        message = ?
+        WHERE id = ?`,
+        [
+            nom,
+            prenom,
+            email,
+            telephone,
+            dateFormation,
+            message,
+            id
+        ],
+        (err) => {
+
+            if (err) {
+                return res.send("Erreur lors de la modification");
+            }
+
+            res.redirect("/admin");
 
         }
     );
