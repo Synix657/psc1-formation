@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation PSC1</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+    color:#333;
+}
+
+/* HEADER */
+
+header{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,60,120,0.7),rgba(0,100,180,0.7)),
+    url("https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+}
+
+.hero{
+    animation:fadeIn 2s ease;
+}
+
+.hero h1{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:1.3rem;
+    max-width:700px;
+    margin:auto;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 35px;
+    background:#ff3b3b;
+    color:white;
+    text-decoration:none;
+    border-radius:50px;
+    font-weight:bold;
+    transition:0.4s;
+}
+
+.btn:hover{
+    transform:translateY(-5px);
+    background:#ff1e1e;
+}
+
+/* NAV */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(8px);
+    z-index:1000;
+}
+
+.logo{
+    color:white;
+    font-size:1.8rem;
+    font-weight:bold;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ffd000;
+}
+
+/* SECTION */
+
+section{
+    padding:100px 10%;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.5rem;
+    color:#004080;
+    margin-bottom:50px;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:80px;
+    margin-bottom:20px;
+}
+
+/* ABOUT */
+
+.about{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:20px;
+}
+
+.about-text p{
+    line-height:1.8;
+}
+
+/* FORM */
+
+.form-container{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    max-width:700px;
+    margin:auto;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+input, textarea{
+    width:100%;
+    padding:15px;
+    margin-top:10px;
+    margin-bottom:20px;
+    border:1px solid #ddd;
+    border-radius:10px;
+}
+
+button{
+    background:#004080;
+    color:white;
+    border:none;
+    padding:15px 30px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#0066cc;
+}
+
+/* FOOTER */
+
+footer{
+    background:#002244;
+    color:white;
+    text-align:center;
+    padding:40px;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:900px){
+
+.about{
+    grid-template-columns:1fr;
+}
+
+.hero h1{
+    font-size:2.8rem;
+}
+
+nav{
+    padding:15px;
+}
+
+nav ul{
+    display:none;
+}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="logo">🚒 PSC1 Formation - Centre de Secours de Bessines-sur-Gartempe</div>
+
+<ul>
+<li><a href="#psc1">PSC1</a></li>
+<li><a href="#programme">Programme</a></li>
+<li><a href="#inscription">Inscription</a></li>
+</ul>
+</nav>
+
+<header>
+
+<div class="hero">
+<h1>Formation PSC1</h1>
+
+<p>
+Apprenez les gestes qui sauvent et devenez capable d'intervenir
+efficacement face à une situation d'urgence.
+</p>
+
+<a href="#inscription" class="btn">
+Je m'inscris
+</a>
+
+</div>
+
+</header>
+
+<section id="psc1">
+
+<h2 class="section-title">Qu'est-ce que le PSC1 ?</h2>
+
+<div class="about">
+
+<img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=80">
+
+<div class="about-text">
+
+<p>
+Le PSC1 (Prévention et Secours Civiques de niveau 1) est la formation
+de référence pour apprendre les gestes de premiers secours.
+</p>
+
+<br>
+
+<p>
+Vous apprendrez à protéger une victime, alerter les secours,
+réagir face à un malaise, une perte de connaissance, un arrêt cardiaque,
+une brûlure ou encore une hémorragie.
+</p>
+
+<br>
+
+<p>
+Accessible à tous dès 10 ans, cette formation est reconnue partout
+en France.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="programme">
+
+<h2 class="section-title">Programme de la formation</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/2966/2966488.png">
+<h3>Protection</h3>
+<p>Éviter le sur-accident et sécuriser la zone.</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3448/3448631.png">
+<h3>Alerte</h3>
+<p>Prévenir efficacement les secours.</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/3177/3177361.png">
+<h3>Massage Cardiaque</h3>
+<p>Pratiquer la réanimation cardio-pulmonaire.</p>
+</div>
+
+<div class="card">
+<img src="https://cdn-icons-png.flaticon.com/512/2785/2785482.png">
+<h3>Défibrillateur</h3>
+<p>Utiliser un DAE en toute sécurité.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="inscription">
+
+<h2 class="section-title">Inscription</h2>
+
+<div class="form-container">
+
+<form id="inscriptionForm">
+
+<input type="text" name="nom" placeholder="Nom" required>
+
+<input type="text" name="prenom" placeholder="Prénom" required>
+
+<input type="email" name="email" placeholder="Adresse Email" required>
+
+<input type="tel" name="telephone" placeholder="Téléphone" required>
+
+<input type="date" name="dateFormation" required>
+
+<textarea
+name="message"
+rows="5"
+placeholder="Message ou remarque">
+</textarea>
+
+<button type="submit">
+Envoyer mon inscription
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<footer>
+
+<h3>🚑 Formation PSC1</h3>
+
+<p>
+Sauver une vie commence par une formation.
+</p>
+
+<br>
+
+<p>
+© 2026 - Tous droits réservés
+</p>
+
+</footer>
+
+<script>
+
+document.getElementById("inscriptionForm")
+.addEventListener("submit", async function(e){
+
+    e.preventDefault();
+
+    const data = {
+        nom: this.nom.value,
+        prenom: this.prenom.value,
+        email: this.email.value,
+        telephone: this.telephone.value,
+        dateFormation: this.dateFormation.value,
+        message: this.message.value
+    };
+
+   const response = await fetch(
+    "http://localhost:3000/inscription",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    }
+);
+
+    const resultat = await response.text();
+
+    alert(resultat);
+
+    this.reset();
+
+});
+
+</script>
+</body>
+</html>
